@@ -28,7 +28,7 @@ namespace Systems
                 ref Unit unit = ref _unitPool.Get(entity);
                 Quaternion rotation = Quaternion.Euler(_cameraData.Angle);
                 Vector3 directionPosition = rotation * new Vector3(0, 0, -_cameraData.Distance);
-                Vector3 newPosition = unit.Transform.position + directionPosition;
+                Vector3 newPosition = unit.Position + directionPosition;
 
                 _cameraData.Transform.rotation = rotation;
                 _cameraData.Transform.position = newPosition;                

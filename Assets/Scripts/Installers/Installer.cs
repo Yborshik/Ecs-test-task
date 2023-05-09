@@ -3,7 +3,7 @@ using Shared;
 using UnityEngine;
 using Zenject;
 
-namespace Components.Installers
+namespace Installers
 {
     public class Installer : MonoInstaller
     {

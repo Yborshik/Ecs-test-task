@@ -15,9 +15,16 @@ public class Startup : MonoBehaviour
         _world = new EcsWorld();
         _systems = new EcsSystems(_world);
 
-        AddSystem(new TimeSystem());
-        AddSystem(new InitPlayerSystem());
-        AddSystem(new CameraSystem());
+        _systems
+            .Add(new TimeSystem())
+            .Add(new InitPlayerSystem())
+            .Add(new CameraSystem())
+            .Add(new InputSystem())
+            .Add(new StartMoveSystem())
+            .Add(new MoveSystem())
+            ;
+
+        Inject();
         
         _systems.Init();
     }
@@ -42,9 +49,11 @@ public class Startup : MonoBehaviour
         }
     }
 
-    public void AddSystem<T>(T system) where T : IEcsSystem
+    private void Inject()
     {
-        _diContainer.Inject(system);
-        _systems.Add(system);
+        foreach (IEcsSystem system in _systems.GetAllSystems())
+        {
+            _diContainer.Inject(system);
+        }
     }
 }
