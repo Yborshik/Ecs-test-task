@@ -18,6 +18,9 @@ public class Startup : MonoBehaviour
         _systems
             .Add(new TimeSystem())
             .Add(new InitPlayerSystem())
+            .Add(new InitPlayerViewSystem())
+            .Add(new InitDoorsSystem())
+            .Add(new InitDoorsViewSystem())
             .Add(new InputSystem())
             .Add(new StartMoveSystem())
             .Add(new MoveSystem())
