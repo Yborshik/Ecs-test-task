@@ -1,6 +1,6 @@
 ﻿using Components;
 using Leopotam.EcsLite;
-using Shared;
+using Services;
 using UnityEngine;
 using Zenject;
 

@@ -1,4 +1,4 @@
-namespace Shared
+namespace Services
 {
     public class TimeService
     {
