@@ -32,13 +32,18 @@ namespace Systems
                 ref Unit unit = ref _unitPool.Get(entity);
                 ref Moving moving = ref _movingPool.Get(entity);
                 
+                Vector3 direction = unit.Position - moving.Position;
+                
                 unit.Position = Vector3.Lerp (unit.Position, moving.Position, unit.MoveSpeed * _timeService.DeltaTime);
-
-                Vector3 diff = unit.Position - moving.Position;
-                if (diff.sqrMagnitude <= DistanceToStop)
+                
+                if (direction.sqrMagnitude <= DistanceToStop)
                 {
                     unit.Position = moving.Position;
                     _movingPool.Del(entity);
+                }
+                else
+                {
+                    unit.Direction = direction.normalized;
                 }
 
                 unit.Transform.position = unit.Position;

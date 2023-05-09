@@ -22,7 +22,7 @@ public class Startup : MonoBehaviour
             .Add(new InputSystem())
             .Add(new StartMoveSystem())
             .Add(new MoveSystem())
-            ;
+            .Add(new RotateSystem());
 
         Inject();
         
