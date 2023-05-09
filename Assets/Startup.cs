@@ -17,6 +17,7 @@ public class Startup : MonoBehaviour
 
         AddSystem(new TimeSystem());
         AddSystem(new InitPlayerSystem());
+        AddSystem(new CameraSystem());
         
         _systems.Init();
     }
