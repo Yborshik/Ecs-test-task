@@ -26,9 +26,11 @@ namespace Systems
             foreach (int entity in _unitFilter)
             {
                 ref Unit unit = ref _unitPool.Get(entity);
-                Quaternion rotation = Quaternion.LookRotation(unit.Direction);
-                unit.Rotation = Quaternion.Lerp(unit.Rotation, rotation, unit.RotateSpeed * _timeService.DeltaTime);
-                unit.Transform.rotation = unit.Rotation;
+                if (unit.Direction.sqrMagnitude > 0)
+                {
+                    Quaternion rotation = Quaternion.LookRotation(unit.Direction);
+                    unit.Rotation = Quaternion.Lerp(unit.Rotation, rotation, unit.RotateSpeed * _timeService.DeltaTime);
+                }
             }
         }
     }

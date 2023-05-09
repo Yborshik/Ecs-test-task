@@ -18,11 +18,12 @@ public class Startup : MonoBehaviour
         _systems
             .Add(new TimeSystem())
             .Add(new InitPlayerSystem())
-            .Add(new CameraSystem())
             .Add(new InputSystem())
             .Add(new StartMoveSystem())
             .Add(new MoveSystem())
-            .Add(new RotateSystem());
+            .Add(new RotateSystem())
+            .Add(new UpdateUnitViewSystem())
+            .Add(new CameraSystem());
 
         Inject();
         

@@ -45,8 +45,6 @@ namespace Systems
                 {
                     unit.Direction = direction.normalized;
                 }
-
-                unit.Transform.position = unit.Position;
             }
         }
     }
