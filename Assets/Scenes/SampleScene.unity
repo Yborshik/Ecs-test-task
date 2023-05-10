@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraData: {fileID: 963194229}
-  _doorsService: {fileID: 0}
+  _doorsService: {fileID: 1904414016}
 --- !u!114 &1508453469
 MonoBehaviour:
   m_ObjectHideFlags: 0

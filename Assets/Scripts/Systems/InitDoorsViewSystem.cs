@@ -1,4 +1,5 @@
 ﻿using Components;
+using Data;
 using Leopotam.EcsLite;
 using Services;
 using Zenject;

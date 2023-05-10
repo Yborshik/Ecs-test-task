@@ -17,14 +17,24 @@ public class Startup : MonoBehaviour
 
         _systems
             .Add(new TimeSystem())
+            
             .Add(new InitPlayerSystem())
             .Add(new InitPlayerViewSystem())
             .Add(new InitDoorsSystem())
             .Add(new InitDoorsViewSystem())
+            
             .Add(new InputSystem())
+            
             .Add(new StartMoveSystem())
             .Add(new MoveSystem())
             .Add(new RotateSystem())
+            
+            .Add(new DoorButtonCollisionSystem())
+            .Add(new StartAnimateDoorSystem())
+            .Add(new StopAnimateDoorSystem())
+            .Add(new DoorProgressSystem())
+            .Add(new UpdateDoorViewSystem())
+            
             .Add(new UpdateUnitViewSystem())
             .Add(new CameraSystem());
 

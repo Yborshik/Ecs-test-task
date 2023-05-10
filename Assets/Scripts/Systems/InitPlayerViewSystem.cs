@@ -10,18 +10,19 @@ namespace Systems
         {
             EcsWorld world = systems.GetWorld();
 
-            EcsFilter playerFilter = world.Filter<Unit>().Inc<ControlledByPlayer>().End();
+            EcsFilter playerFilter = world.Filter<Unit>().End();
             
             EcsPool<UnitView> unitViewPool = world.GetPool<UnitView>();
 
-            int playerEntity = playerFilter.GetRawEntities()[0];
+            foreach (int playerEntity in playerFilter)
+            {
+                ref UnitView unitView = ref unitViewPool.Add(playerEntity);
 
-            ref UnitView unitView = ref unitViewPool.Add(playerEntity);
+                GameObject prefab = Resources.Load<GameObject>("Player");
+                GameObject instance = Object.Instantiate(prefab);
 
-            GameObject prefab = Resources.Load<GameObject>("Player");
-            GameObject instance = Object.Instantiate(prefab);
-
-            unitView.Transform = instance.transform;
+                unitView.Transform = instance.transform;
+            }
         }
     }
 }

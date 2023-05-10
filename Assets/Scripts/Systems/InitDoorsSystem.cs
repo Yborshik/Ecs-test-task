@@ -1,4 +1,5 @@
 ﻿using Components;
+using Data;
 using Leopotam.EcsLite;
 using Services;
 using Zenject;
@@ -16,13 +17,15 @@ namespace Systems
 
             for (var index = 0; index < _doorsService.Doors.Count; index++)
             {
-                var doorData = _doorsService.Doors[index];
+                DoorData doorData = _doorsService.Doors[index];
                 int entity = systems.GetWorld().NewEntity();
 
                 ref Door door = ref doorPool.Add(entity);
 
                 door.Index = index;
                 door.ButtonPosition = doorData.ButtonTransform.position;
+                door.ButtonSize = doorData.ButtonSize;
+                door.OpenDuration = doorData.OpenDuration;
             }
         }
     }

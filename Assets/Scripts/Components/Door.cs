@@ -6,5 +6,7 @@ namespace Components
     {
         public int Index;
         public Vector3 ButtonPosition;
+        public float ButtonSize;
+        public float OpenDuration;
     }
 }

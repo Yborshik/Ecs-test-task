@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7452865359966716259}
   - component: {fileID: 2303155356596360397}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: DoorModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,6 +216,7 @@ MonoBehaviour:
   _buttonTransform: {fileID: 2862510087137179658}
   _animator: {fileID: 1222135742301102683}
   _buttonSize: 1
+  _openDuration: 3
 --- !u!95 &1222135742301102683
 Animator:
   serializedVersion: 5
