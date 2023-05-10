@@ -25,7 +25,6 @@ namespace Systems
                 ref DoorView doorView = ref doorViewPool.Add(doorEntity);
                 
                 DoorData doorData = _doorsService.Doors[door.Index];
-                doorView.ButtonTransform = doorData.ButtonTransform;
                 doorView.DoorAnimator = doorData.Animator;
             }
         }
