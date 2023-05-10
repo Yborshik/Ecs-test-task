@@ -1,4 +1,5 @@
 ﻿using Components;
+using Data;
 using Leopotam.EcsLite;
 using UnityEngine;
 
@@ -20,8 +21,10 @@ namespace Systems
 
                 GameObject prefab = Resources.Load<GameObject>("Player");
                 GameObject instance = Object.Instantiate(prefab);
+                UnitData unitData = instance.GetComponent<UnitData>();
 
-                unitView.Transform = instance.transform;
+                unitView.Transform = unitData.transform;
+                unitView.Animator = unitData.Animator;
             }
         }
     }
