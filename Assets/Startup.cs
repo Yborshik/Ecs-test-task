@@ -33,9 +33,9 @@ public class Startup : MonoBehaviour
             .Add(new StartAnimateDoorSystem())
             .Add(new StopAnimateDoorSystem())
             .Add(new DoorProgressSystem())
-            .Add(new UpdateDoorViewSystem())
             
             .Add(new UpdateUnitViewSystem())
+            .Add(new UpdateDoorViewSystem())
             .Add(new CameraSystem());
 
         Inject();

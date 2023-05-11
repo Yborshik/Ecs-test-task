@@ -10,17 +10,16 @@ namespace Systems
     {
         [Inject] private TimeService _timeService;
         
-        private EcsWorld _world;
         private EcsFilter _animatingDoorFilter;
         private EcsPool<Door> _doorPool;
         private EcsPool<Progress> _progressPool;
 
         public void Init(IEcsSystems systems)
         {
-            _world = systems.GetWorld();
-            _animatingDoorFilter = _world.Filter<Door>().Inc<Animating>().End();
-            _doorPool = _world.GetPool<Door>();
-            _progressPool = _world.GetPool<Progress>();
+            EcsWorld world = systems.GetWorld();
+            _animatingDoorFilter = world.Filter<Door>().Inc<Animating>().End();
+            _doorPool = world.GetPool<Door>();
+            _progressPool = world.GetPool<Progress>();
         }
         
         public void Run(IEcsSystems systems)

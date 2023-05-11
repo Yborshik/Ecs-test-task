@@ -8,17 +8,16 @@ namespace Systems
     {
         private static readonly int OpenParameter = Animator.StringToHash("OpenParameter");
         
-        private EcsWorld _world;
         private EcsFilter _animatingDoorFilter;
         private EcsPool<Progress> _doorProgress;
         private EcsPool<DoorView> _doorViewPool;
 
         public void Init(IEcsSystems systems)
         {
-            _world = systems.GetWorld();
-            _animatingDoorFilter = _world.Filter<Door>().Inc<Animating>().End();
-            _doorProgress = _world.GetPool<Progress>();
-            _doorViewPool = _world.GetPool<DoorView>();
+            EcsWorld world = systems.GetWorld();
+            _animatingDoorFilter = world.Filter<Door>().Inc<Animating>().End();
+            _doorProgress = world.GetPool<Progress>();
+            _doorViewPool = world.GetPool<DoorView>();
         }
         
         public void Run(IEcsSystems systems)

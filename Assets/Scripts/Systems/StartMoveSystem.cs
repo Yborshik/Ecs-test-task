@@ -5,17 +5,16 @@ namespace Systems
 {
     public class StartMoveSystem : IEcsInitSystem, IEcsRunSystem
     {
-        private EcsWorld _world;
         private EcsFilter _moveCommandFilter;
         private EcsPool<Moving> _movingPool;
-        private EcsPool<MoveCommand> _clickEventPool;
+        private EcsPool<MoveCommand> _moveCommandPool;
 
         public void Init(IEcsSystems systems)
         {
-            _world = systems.GetWorld();
-            _moveCommandFilter = _world.Filter<MoveCommand>().End();
-            _movingPool = _world.GetPool<Moving>();
-            _clickEventPool = _world.GetPool<MoveCommand>();
+            EcsWorld world = systems.GetWorld();
+            _moveCommandFilter = world.Filter<MoveCommand>().End();
+            _movingPool = world.GetPool<Moving>();
+            _moveCommandPool = world.GetPool<MoveCommand>();
         }
         
         public void Run(IEcsSystems systems)
@@ -27,7 +26,7 @@ namespace Systems
                     _movingPool.Del(entity);
                 }
 
-                ref MoveCommand moveCommand = ref _clickEventPool.Get(entity); 
+                ref MoveCommand moveCommand = ref _moveCommandPool.Get(entity); 
                 ref Moving moving = ref _movingPool.Add(entity);
                 moving.Position = moveCommand.Position;
             }

@@ -12,17 +12,16 @@ namespace Systems
         
         const float DistanceToStop = 0.001f;
         
-        private EcsWorld _world;
         private EcsFilter _movingFilter;
         private EcsPool<Unit> _unitPool;
         private EcsPool<Moving> _movingPool;
 
         public void Init(IEcsSystems systems)
         {
-            _world = systems.GetWorld();
-            _movingFilter = _world.Filter<Unit>().Inc<Moving>().End();
-            _unitPool = _world.GetPool<Unit>();
-            _movingPool = _world.GetPool<Moving>();
+            EcsWorld world = systems.GetWorld();
+            _movingFilter = world.Filter<Unit>().Inc<Moving>().End();
+            _unitPool = world.GetPool<Unit>();
+            _movingPool = world.GetPool<Moving>();
         }
 
         public void Run(IEcsSystems systems)

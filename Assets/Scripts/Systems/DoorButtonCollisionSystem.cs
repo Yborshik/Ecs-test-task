@@ -7,8 +7,6 @@ namespace Systems
 {
     public class DoorButtonCollisionSystem : IEcsInitSystem, IEcsRunSystem
     {
-        private EcsWorld _world;
-        
         private EcsFilter _unitFilter;
         private EcsFilter _doorFilter;
         
@@ -20,16 +18,16 @@ namespace Systems
 
         public void Init(IEcsSystems systems)
         {
-            _world = systems.GetWorld();
+            EcsWorld world = systems.GetWorld();
 
-            _unitFilter = _world.Filter<Unit>().End();
-            _doorFilter = _world.Filter<Door>().End();
+            _unitFilter = world.Filter<Unit>().End();
+            _doorFilter = world.Filter<Door>().End();
 
-            _unitPool = _world.GetPool<Unit>();
-            _doorPool = _world.GetPool<Door>();
-            _collisionEnterPool = _world.GetPool<CollisionEnterEvent>();
-            _collisionExitPool = _world.GetPool<CollisionExitEvent>();
-            _collisionStayPool = _world.GetPool<CollisionStay>();
+            _unitPool = world.GetPool<Unit>();
+            _doorPool = world.GetPool<Door>();
+            _collisionEnterPool = world.GetPool<CollisionEnterEvent>();
+            _collisionExitPool = world.GetPool<CollisionExitEvent>();
+            _collisionStayPool = world.GetPool<CollisionStay>();
         }
 
         public void Run(IEcsSystems systems)

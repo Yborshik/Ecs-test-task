@@ -5,15 +5,14 @@ namespace Systems
 {
     public class StopAnimateDoorSystem : IEcsInitSystem, IEcsRunSystem
     {
-        private EcsWorld _world;
         private EcsFilter _doorCollisionExitFilter;
         private EcsPool<Animating> _animatingPool;
 
         public void Init(IEcsSystems systems)
         {
-            _world = systems.GetWorld();
-            _doorCollisionExitFilter = _world.Filter<Door>().Inc<CollisionExitEvent>().End();
-            _animatingPool = _world.GetPool<Animating>();
+            EcsWorld world = systems.GetWorld();
+            _doorCollisionExitFilter = world.Filter<Door>().Inc<CollisionExitEvent>().End();
+            _animatingPool = world.GetPool<Animating>();
         }
         
         public void Run(IEcsSystems systems)

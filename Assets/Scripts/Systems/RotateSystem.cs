@@ -10,15 +10,14 @@ namespace Systems
     {
         [Inject] private TimeService _timeService;
         
-        private EcsWorld _world;
         private EcsFilter _unitFilter;
         private EcsPool<Unit> _unitPool;
 
         public void Init(IEcsSystems systems)
         {
-            _world = systems.GetWorld();
-            _unitFilter = _world.Filter<Unit>().End();
-            _unitPool = _world.GetPool<Unit>();
+            EcsWorld world = systems.GetWorld();
+            _unitFilter = world.Filter<Unit>().Inc<Moving>().End();
+            _unitPool = world.GetPool<Unit>();
         }
 
         public void Run(IEcsSystems systems)

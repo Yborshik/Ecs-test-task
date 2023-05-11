@@ -10,16 +10,14 @@ namespace Systems
     {
         [Inject] private CameraData _cameraData;
 
-        private EcsWorld _world;
         private EcsFilter _playerFilter;
-        private EcsFilter _unitFilter;
         private EcsPool<MoveCommand> _moveCommandPool;
 
         public void Init(IEcsSystems systems)
         {
-            _world = systems.GetWorld();
-            _playerFilter = _world.Filter<Unit>().Inc<ControlledByPlayer>().End();
-            _moveCommandPool = _world.GetPool<MoveCommand>();
+            EcsWorld world = systems.GetWorld();
+            _playerFilter = world.Filter<Unit>().Inc<ControlledByPlayer>().End();
+            _moveCommandPool = world.GetPool<MoveCommand>();
         }
 
         public void Run(IEcsSystems systems)
